@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청개구리 하자진단 통합센터(PRO용)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --text-primary: #1c1e21;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            /* [수정] 상하 여백 최소화 (20px -> 10px) */
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-primary);
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background-color: transparent;
+        }
+
+        /* 헤더 스타일 */
+        .portal-header {
+            text-align: center;
+            /* [수정] 헤더 아래 여백 축소 (30px -> 15px) */
+            margin-bottom: 15px;
+            background-color: #fff;
+            /* [수정] 헤더 내부 여백 축소 (30px -> 20px) */
+            padding: 20px 15px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .company-logo {
+            /* [수정] 로고 크기 조정 */
+            font-size: 2.5rem;
+            color: #2e7d32; 
+            margin-bottom: 5px;
+        }
+
+        .portal-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0;
+            color: #1a237e;
+        }
+
+        .portal-subtitle {
+            font-size: 0.85rem;
+            color: #546e7a;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e0e0e0;
+            color: #424242;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        /* 메인 메뉴 카드 스타일 */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* [수정] 카드 간격 축소 */
+        }
+
+        .menu-card {
+            background-color: #fff;
+            padding: 18px; /* [수정] 카드 내부 여백 미세 조정 */
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:active { transform: scale(0.98); }
+
+        /* 1. 결로 진단 테마 */
+        .card-dewpoint:hover { border-color: #2979ff; }
+        .icon-box-dew {
+            width: 50px; height: 50px; /* [수정] 아이콘 박스 크기 최적화 */
+            background-color: #e3f2fd;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #1565c0;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* 2. 소음 진단 테마 */
+        .card-noise:hover { border-color: #ff6f00; }
+        .icon-box-noise {
+            width: 50px; height: 50px; /* [수정] 아이콘 박스 크기 최적화 */
+            background-color: #fff3e0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #e65100;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .card-info { flex: 1; }
+        .card-title { font-size: 1.05rem; font-weight: 800; margin: 0 0 4px 0; }
+        .card-desc { font-size: 0.75rem; color: #78909c; margin: 0; }
+
+        .arrow-icon { color: #cfd8dc; font-size: 1.2rem; }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            /* [수정] 푸터 상단 여백 축소 (40px -> 20px) */
+            margin-top: 20px;
+            color: #90a4ae;
+            font-size: 0.7rem;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="portal-header">
+        <div class="company-logo"><i class="fas fa-frog"></i></div>
+        <h1 class="portal-title">통합 하자진단 센터(PRO용)</h1>
+        <p class="portal-subtitle">Cheong-gaeguri Diagnostic Portal</p>
+        <span class="badge"><i class="fas fa-lock"></i> 사내 업무용 (Authorized Only)</span>
+    </header>
+
+    <div class="menu-grid">
+        
+        <a href="https://anhjjeon1.github.io/cheong-gaeguri-pro-dewpoint/" class="menu-card card-dewpoint">
+            <div class="icon-box-dew">
+                <i class="fas fa-tint"></i>
+            </div>
+            <div class="card-info">
+                <h2 class="card-title">결로 진단 AI (PRO)</h2>
+                <p class="card-desc">이슬점 분석 · 곰팡이 원인 · 열화상 진단</p>
+            </div>
+            <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="https://anhjjeon1.github.io/cheong-gaeguri-pro-noise/" class="menu-card card-noise">
+            <div class="icon-box-noise">
+                <i class="fas fa-wave-square"></i>
+            </div>
+            <div class="card-info">
+                <h2 class="card-title">소음 진단 AI (PRO)</h2>
+                <p class="card-desc">기체 누설 · 전기 방전 · 산업용 음향 분석</p>
+            </div>
+            <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <footer class="footer">
+        청개구리샤시 기술지원팀<br>
+        대표전화: 1599-7380 | 시스템 문의: 관리자<br>
+        © 2026 Cheong-gaeguri Corp. Internal System
+    </footer>
+</div>
+
+</body>
+</html>
